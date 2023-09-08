@@ -3,13 +3,16 @@
 Plugin for integrating JMC into beet.
 
 Setup in beet.yml:
+
 ```yml
 meta:
   jmc:
     namespace: my_namespace
     file: src/data/my_namespace/jmc/main.jmc
 ```
+
 You can also modify jmc.txt content virtually with beet.yml, though, it's optional
+
 ```yml
 meta:
   jmc:
