@@ -2,8 +2,6 @@
 
 Plugin for integrating JMC into beet.
 
-To install JMC, run `pip install jmcfunction --pre`
-
 Setup in beet.yml:
 ```yml
 meta:
