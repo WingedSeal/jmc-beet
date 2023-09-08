@@ -3,10 +3,7 @@ from pathlib import Path
 from setuptools import setup, find_packages
 
 
-VERSION = "v0.0.1-alpha.3"
-
-with (Path(__file__).parents[1] / "README.md").open(encoding="utf-8") as file:
-    README = "\n" + file.read()
+VERSION = "v0.0.1-alpha.4"
 
 DESCRIPTION = "A Beet plugin that act as an adapter for JMC"
 version = VERSION.replace("-alpha.", "a").replace("-beta.", "b")[1:]
@@ -17,10 +14,11 @@ setup(
     author_email="firm09719@gmail.com",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
-    long_description=README,
+    long_description="""
+# jmc-beet
+A plugins for integrating JMC into Beet
+""",
     packages=find_packages(),
-    package_data={'': ['README.md']},
-    include_package_data=True,
     install_requires=[
         "jmcfunction",
         "beet"
