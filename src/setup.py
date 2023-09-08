@@ -16,7 +16,7 @@ setup(
     long_description_content_type="text/markdown",
     long_description="""
 # jmc-beet
-A plugins for integrating JMC into Beet
+A plugin for integrating JMC into Beet
 """,
     packages=find_packages(),
     install_requires=[
