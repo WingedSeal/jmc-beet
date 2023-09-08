@@ -18,7 +18,8 @@ setup(
     long_description=README,
     packages=find_packages(),
     install_requires=[
-        "jmcfunction"
+        "jmcfunction",
+        "beet"
     ],
     keywords=[
         "python",
