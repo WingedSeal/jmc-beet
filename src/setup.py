@@ -9,10 +9,10 @@ with (Path(__file__).parents[1] / "README.md").open(encoding="utf-8") as file:
     README = "\n" + file.read()
 
 DESCRIPTION = "A Beet plugin that act as an adapter for JMC"
-
+version = VERSION.replace("-alpha.", "a").replace("-beta.", "b")[1:]
 setup(
     name="jmc-beet",
-    version=VERSION,
+    version=version,
     author="WingedSeal",
     author_email="firm09719@gmail.com",
     description=DESCRIPTION,
