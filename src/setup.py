@@ -19,6 +19,8 @@ setup(
     long_description_content_type="text/markdown",
     long_description=README,
     packages=find_packages(),
+    package_data={'': ['README.md']},
+    include_package_data=True,
     install_requires=[
         "jmcfunction",
         "beet"
