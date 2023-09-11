@@ -55,7 +55,7 @@ RESOURCE_TYPE_MAP: dict[str, Callable[[str], Any]] = {
     "item_modifiers": ItemModifier,
     "loot_tables": LootTable,
     "predicates": Predicate,
-    "recipe": Recipe
+    "recipes": Recipe
 }
 
 DEFAULT_JMC_TXT = {
