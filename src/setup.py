@@ -3,7 +3,7 @@ from pathlib import Path
 from setuptools import setup, find_packages
 
 
-VERSION = "v0.0.1-alpha.4"
+VERSION = "v0.0.1-alpha.5"
 
 DESCRIPTION = "A Beet plugin that act as an adapter for JMC"
 version = VERSION.replace("-alpha.", "a").replace("-beta.", "b")[1:]
