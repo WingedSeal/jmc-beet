@@ -42,6 +42,7 @@ from beet import (
     Recipe
 )
 
+from .config import VERSION
 
 RESOURCE_TYPE_MAP: dict[str, Callable[[str], Any]] = {
     "tags/block": BlockTag,

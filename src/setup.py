@@ -1,9 +1,7 @@
 """Setup file for pypi"""
 from pathlib import Path
 from setuptools import setup, find_packages
-
-
-VERSION = "v0.0.1-alpha.6"
+from jmcbeet import VERSION
 
 DESCRIPTION = "A Beet plugin that act as an adapter for JMC"
 version = VERSION.replace("-alpha.", "a").replace("-beta.", "b")[1:]
@@ -41,6 +39,11 @@ A plugin for integrating JMC into Beet
         "Operating System :: Microsoft :: Windows",
     ],
     python_requires=">=3.10",
+    entry_points={
+        "console_scripts": [
+            "jmcbeet=jmcbeet.__main__:main",
+        ]
+    },
     project_urls={
         "Documentation": "https://jmc.wingedseal.com/",
         "Repository": "https://github.com/WingedSeal/jmc-beet",
