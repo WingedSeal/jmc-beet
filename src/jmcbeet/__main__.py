@@ -43,7 +43,7 @@ def main():
     args = parser.parse_args()
     if args.command == "init":
         namespace = args.namespace
-        if namespace is not None:
+        if namespace is None:
             namespace = input("namespace: ")
 
     if not (cwd / "beet.yaml").is_file():
