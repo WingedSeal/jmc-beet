@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+import time
 
 from .config import VERSION
 
@@ -22,7 +23,7 @@ meta:
     formatting: minify
   jmc:
     namespace: {namespace}
-    file: src/data/{namespace}/jmc/main.jmc
+    file: src/data/{namespace}/main.jmc
 """
 
 
@@ -55,13 +56,12 @@ def main():
     (namespace_folder / "main.jmc").touch()
     (namespace_folder / "main.hjmc").touch()
 
+    retcode = subprocess.call(
+        [sys.executable, "-m", "pip", "install", "mecha"])
+    time.sleep(0.5)
+    subprocess.call(["beet"])
     is_in_venv = sys.prefix != sys.base_prefix
+    if retcode != 0:
+        print("\n[JMC-Beet] Unable to install `mecha`, administrator privileges required. Run `pip install mecha` manually.")
     if not is_in_venv:
-        subprocess.check_call([sys.executable, "-m", "venv", "venv"])
-        if os.name == "nt":
-            subprocess.check_call([r"venv\Scripts\activate"])
-        else:
-            subprocess.check_call(["source", "venv/bin/activate"])
-
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "mecha"])
-    subprocess.check_call(["beet"])
+        print("[JMC-Beet] Virtual environment not detected.")
