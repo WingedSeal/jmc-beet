@@ -45,7 +45,7 @@ from beet import (
 from .config import VERSION
 
 RESOURCE_TYPE_MAP: dict[str, Callable[[str], Any]] = {
-    "tags/block": BlockTag,
+    "tags/blocks": BlockTag,
     "tags/entity_types": EntityTypeTag,
     "tags/fluids": FluidTag,
     "tags/functions": FunctionTag,
@@ -106,7 +106,7 @@ def beet_default(ctx: Context):
         print(error)
         return
     except Exception as error:
-        print("JMC-Warning | Unknown exception has occured. This is an error in JMC, not beet's fault.")
+        print("JMC-Beet Warning | Unknown exception has occured. This is an error in JMC or JMC-Beet, not beet's fault.")
         print(type(error).__name__)
         print(error)
         return
@@ -114,7 +114,7 @@ def beet_default(ctx: Context):
     for resource in jmc_pack.resource_locations:
         if resource.type not in RESOURCE_TYPE_MAP:
             print(
-                f"JMC-Warning | Unrecogized resource type '{resource.type}'. Couldn't add '{resource.location}'")
+                f"JMC-Beet Warning | Unrecogized resource type '{resource.type}'. Couldn't add '{resource.location}'")
             continue
         datapack[resource.location] = RESOURCE_TYPE_MAP[resource.type](
             resource.content)
