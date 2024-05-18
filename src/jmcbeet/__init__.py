@@ -97,7 +97,7 @@ def beet_default(ctx: Context):
         jmc_pack = PyJMC(
             namespace,
             description="",
-            pack_format="-1",
+            pack_format="9999",
             target=file_path,
             jmc_txt=jmc_txt)
     except JMC_EXCEPTIONS as error:
