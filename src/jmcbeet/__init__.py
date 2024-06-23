@@ -104,9 +104,6 @@ def beet_default(ctx: Context):
     if "file" not in ctx.meta["jmc"]:
         print("JMC-Warning | meta.jmc.file is not specified in beet.yml")
         return
-    if "file" not in ctx.meta["jmc"]:
-        print("JMC-Warning | meta.jmc.file is not specified in beet.yml")
-        return
 
     pack_format = ctx.data.pack_format
     namespace: str = ctx.meta["jmc"]["namespace"]
