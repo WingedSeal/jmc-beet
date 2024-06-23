@@ -15,6 +15,7 @@ require: [jmcbeet]
 data_pack:
   load: [src]
   name: datapack
+  pack_format: {pack_format}
 
 pipeline: [mecha]
 
@@ -23,7 +24,6 @@ meta:
     formatting: minify
   jmc:
     namespace: {namespace}
-    pack_format: {pack_format}
     file: src/data/{namespace}/main.jmc
 """
 

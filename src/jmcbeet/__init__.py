@@ -7,7 +7,6 @@ Setup in beet.yml:
 ```yml
 meta:
   jmc:
-    pack_format: 48
     namespace: my_namespace
     file: src/data/my_namespace/jmc/main.jmc
 ```
@@ -15,7 +14,6 @@ You can also modify jmc.txt content virtually with beet.yml, though, it's option
 ```yml
 meta:
   jmc:
-    pack_format: 48
     namespace: my_namespace
     file: src/data/my_namespace/jmc/main.jmc
     LOAD: __load__
@@ -29,9 +27,22 @@ meta:
 
 from typing import Any, Callable
 
-from beet import (Advancement, BlockTag, Context, DataPack, EntityTypeTag,
-                  FluidTag, Function, FunctionTag, GameEventTag, ItemModifier,
-                  ItemTag, LootTable, Predicate, Recipe)
+from beet import (
+    Advancement,
+    BlockTag,
+    Context,
+    DataPack,
+    EntityTypeTag,
+    FluidTag,
+    Function,
+    FunctionTag,
+    GameEventTag,
+    ItemModifier,
+    ItemTag,
+    LootTable,
+    Predicate,
+    Recipe,
+)
 
 from .config import VERSION
 
@@ -87,16 +98,13 @@ def beet_default(ctx: Context):
     if "jmc" not in ctx.meta:
         print("JMC-Warning | meta.jmc is not specified in beet.yml")
         return
-    if "pack_format" not in ctx.meta["jmc"]:
-        print("JMC-Warning | meta.jmc.pack_format is not specified in beet.yml")
-        return
     if "namespace" not in ctx.meta["jmc"]:
         print("JMC-Warning | meta.jmc.namespace is not specified in beet.yml")
         return
     if "file" not in ctx.meta["jmc"]:
         print("JMC-Warning | meta.jmc.file is not specified in beet.yml")
         return
-    pack_format: int = ctx.meta["jmc"]["pack_format"]
+    pack_format: int = ctx.meta["data_pack"]["pack_format"]
     namespace: str = ctx.meta["jmc"]["namespace"]
     file_path: str = ctx.meta["jmc"]["file"]
 
