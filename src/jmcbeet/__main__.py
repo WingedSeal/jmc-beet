@@ -8,7 +8,7 @@ from pathlib import Path
 from .config import VERSION
 
 
-def get_beet_yaml(namespace: str, pack_format: str):
+def get_beet_yaml(namespace: str, pack_format: str) -> str:
     return f"""output: build
 require: [jmcbeet]
 
@@ -33,7 +33,8 @@ def main():
     parser = argparse.ArgumentParser(description="JMC-Beet integration")
     parser.add_argument("--version", "-v", action="version", version=VERSION)
     subparser = parser.add_subparsers(dest="command", required=True)
-    init_parser = subparser.add_parser("init", help="initialize beet workspace for jmc")
+    init_parser = subparser.add_parser(
+        "init", help="initialize beet workspace for jmc")
     init_parser.add_argument("--namespace", "-n", required=False, type=str)
     init_parser.add_argument("--pack-format", "-pf", required=False, type=str)
 
@@ -55,7 +56,8 @@ def main():
     (namespace_folder / "main.jmc").touch()
     (namespace_folder / "main.hjmc").touch()
 
-    retcode = subprocess.call([sys.executable, "-m", "pip", "install", "mecha"])
+    retcode = subprocess.call(
+        [sys.executable, "-m", "pip", "install", "mecha"])
     time.sleep(0.5)
     subprocess.call(["beet"])
     is_in_venv = sys.prefix != sys.base_prefix

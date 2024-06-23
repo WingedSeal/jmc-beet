@@ -91,7 +91,7 @@ def beet_default(ctx: Context):
         from jmc.api import EXCEPTIONS as JMC_EXCEPTIONS
         from jmc.api import PyJMC
     except ImportError:
-        print("JMC-Warning | JMC is not installed. ")
+        print("JMC-Warning | JMC is not installed.")
         return
 
     datapack = DataPack()
@@ -104,7 +104,11 @@ def beet_default(ctx: Context):
     if "file" not in ctx.meta["jmc"]:
         print("JMC-Warning | meta.jmc.file is not specified in beet.yml")
         return
-    pack_format: int = ctx.meta["data_pack"]["pack_format"]
+    if "file" not in ctx.meta["jmc"]:
+        print("JMC-Warning | meta.jmc.file is not specified in beet.yml")
+        return
+
+    pack_format = ctx.data.pack_format
     namespace: str = ctx.meta["jmc"]["namespace"]
     file_path: str = ctx.meta["jmc"]["file"]
 
@@ -144,6 +148,7 @@ def beet_default(ctx: Context):
                 f"JMC-Beet Warning | Unrecogized resource type '{resource.type}'. Couldn't add '{resource.location}'"
             )
             continue
-        datapack[resource.location] = resource_type_map[resource.type](resource.content)
+        datapack[resource.location] = resource_type_map[resource.type](
+            resource.content)
 
     ctx.data.merge(datapack)
